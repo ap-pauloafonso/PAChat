@@ -1,4 +1,5 @@
 # PAChat
+![Settings Window](https://github.com/ap-pauloafonso/PAChat/blob/master/screenshot/img2.png)
 A simple chat written in C# using Socket. The basic idea is that the server receive the data from the client then it broadcast to all connected clients.
 
 The default server port is 7000, however you can change it by passing the port number as argument: `Socket_Server.exe [port]`.
