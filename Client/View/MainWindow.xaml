@@ -14,24 +14,23 @@
     </Window.DataContext>
     <Window.Resources>
 
-        <DataTemplate DataType="{x:Type model:TextMessage}">
-            <TextBlock>
-                <Run Text="{Binding Client}"/>
-                <Run Text =": "/>
-                <Run Text="{Binding Text}"/>
-            </TextBlock>
+        <DataTemplate  DataType="{x:Type model:TextMessage}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontWeight="Bold" Text="{Binding Client}"/>
+                <TextBlock Text=": "/>
+                <TextBox TextWrapping="WrapWithOverflow" IsReadOnly="True" Width="auto"  BorderThickness="0" Text="{Binding Text}"/>
+            </StackPanel>
         </DataTemplate>
 
 
 
-        <DataTemplate DataType="{x:Type model:AlertMessage}">
+            <DataTemplate DataType="{x:Type model:AlertMessage}">
             <StackPanel Orientation="Horizontal" >
                 <TextBlock FontWeight="Bold" Foreground="Red" Text="&lt;"/>
                 <TextBlock FontWeight="Bold" Foreground="Red" Text="{Binding Client}"/>
                 <TextBlock Text="  "/>
                 <TextBlock FontWeight="Bold" Foreground="Red" Text="{Binding Status}"/>
                 <TextBlock FontWeight="Bold" Foreground="Red" Text="&gt;"/>
-
             </StackPanel>
         </DataTemplate>
     </Window.Resources>
@@ -75,9 +74,11 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0">
-                    <ListBox ItemsSource="{Binding Connection.MessageList}" Height="200"/>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Height="200" BorderThickness="1">
+                        <ItemsControl ItemsSource="{Binding Connection.MessageList}"/>
+                    </ScrollViewer>
 
-                    <Grid Height="50">
+                        <Grid Height="50">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="*"/>
